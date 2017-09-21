@@ -65,13 +65,13 @@ body {
   font-size: 2em;
 }
 #mm {
-  z-index: 9000:
+  z-index: 9000;
   width:100%;
-  position: absolute;
+  height:120px;
+  /*position: absolute;*/
   color:white;
   text-align:center;
-  padding:100px 0 0 0;
+  padding:10px 0 0 0;
   font-size:2em;
   display: block;
 }
-

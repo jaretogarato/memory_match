@@ -1,18 +1,19 @@
-/* global $ CSSPlugin TweenMax TimelineMax console:true */
+/* jslint global $ CSSPlugin TweenMax TimelineMax console:true */
+/*global $ CSSPlugin TweenMax TimelineMax console:true*/
 /* eslint indent: ["error", 2, { "SwitchCase": 1 }] */
 /* eslint no-console: ["error", { allow: ["log", "warn", "error"] }] */
 
 $(document).ready(function () {
   'use strict';
 
-  var i, j, clickedCard, testCard, testCardPos, clickedPos, tcp, ccp, 
+  var i, j, clickedCard, testCard, testCardPos, clickedPos, tcp, ccp,
     activeCount = 0, matchedPairs = 0,
     cardIdArray = ['1a', '1b', '2a', '2b', '3a', '3b', '4a', '4b', '5a', '5b', '6a', '6b'],
     cardClickedArray = [false, false, false, false, false, false, false, false, false, false, false, false];
 
   $('#alert').css('opacity', '0');
   $('#alert').css('display', 'none');
-  
+
   function hideIt(){
     $('#alert').css('display', 'none');
   }
@@ -42,7 +43,7 @@ $(document).ready(function () {
     var id = cardIdArray[index];
     $(this).attr('id', id);
   });
-  
+
   $('#1a').css('background-image', 'url(images/01-alien.png)');
   $('#1b').css('background-image', 'url(images/01-alien.png)');
   $('#2a').css('background-image', 'url(images/02-alien.png)');
@@ -70,24 +71,24 @@ $(document).ready(function () {
       .to(element, .5, {z:0},.5);
     element.animation = tl;
   });
-  
+
   $('.cardCont').on('click', function() {
     clickedCard = $(this).find(':first-child').attr('id'); // 2-char id
     clickedPos = cardIdArray.indexOf($(this).find(':first-child').attr('id')); // int
     console.log(cardClickedArray[clickedPos]);
-    
+
     if (cardClickedArray[clickedPos] === false){
       cardClickedArray[clickedPos] = true;
       this.animation.play();
       if (activeCount === 0) {
-        activeCount = 1; 
+        activeCount = 1;
         testCard = clickedCard;
         testCardPos = clickedPos;
         tcp = $('#' + testCard).parent();
         tcp = tcp[0];
         ccp = $('#' + clickedCard).parent();
         ccp = ccp[0];
-      } else { // one card has been flipped. time to chack for a match. 
+      } else { // one card has been flipped. time to chack for a match.
         activeCount = 0;
         cardClickedArray[clickedPos] = false;
         if (testCard.charAt(0) === clickedCard.charAt(0)) {
@@ -104,7 +105,7 @@ $(document).ready(function () {
         }
       }
     } else {
-      // do nothing  
+      // do nothing
     }
 
     // console.log('<<<>>>>');
@@ -117,4 +118,3 @@ $(document).ready(function () {
     // console.log("");
   });
 });
-
